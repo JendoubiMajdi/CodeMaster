@@ -19,9 +19,12 @@
             <p class="card-text"><strong>Détails :</strong> {{ $voyage->details }}</p>
             <p class="card-text"><strong>Destination :</strong> {{ optional($voyage->destination)->nom ?? 'N/A' }}</p>
 
-            @if ($voyage->image)
-                                <img src="{{ asset('storage/' . $voyage->image) }}" alt="{{ $voyage->titre }}" class="img-fluid" style="border-radius: 10px; max-height: 200px; object-fit: cover; width: 100%;">
-                            @endif
+            <div class="text-center">
+    @if ($voyage->image)
+        <img src="{{ asset('storage/' . $voyage->image) }}" alt="{{ $voyage->titre }}" class="img-fluid d-block mx-auto" style="border-radius: 10px; max-height: 250px; max-width: 100%; object-fit: cover; width: 70%;">
+    @endif
+</div>
+
 
             <div class="text-center mt-4">
                 <a href="{{ route('voyages.index') }}" class="btn btn-primary" style="padding: 10px 20px;"> ← Retour à la liste</a>

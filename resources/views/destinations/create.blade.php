@@ -50,32 +50,44 @@
         @csrf
 
         <div class="mb-3">
-            <label for="nom" class="form-label" style="color: #333;">Nom</label>
+            <label for="nom" class="form-label" style="color: #007bff;">Nom</label>
             <input type="text" name="nom" id="nom" class="form-control" required style="border-radius: 10px; transition: border-color 0.3s;">
         </div>
 
         <div class="mb-3">
-            <label for="lieu_visite" class="form-label" style="color: #333;">Lieu Visité</label>
+            <label for="lieu_visite" class="form-label" style="color: #007bff;">Lieu Visité</label>
             <input type="text" name="lieu_visite" id="lieu_visite" class="form-control" required style="border-radius: 10px; transition: border-color 0.3s;">
         </div>
 
         <div class="mb-3">
-            <label for="region" class="form-label" style="color: #333;">Région</label>
+            <label for="region" class="form-label" style="color: #007bff;">Région</label>
             <input type="text" name="region" id="region" class="form-control" style="border-radius: 10px; transition: border-color 0.3s;">
         </div>
 
         <div class="mb-3">
-            <label for="type" class="form-label" style="color: #333;">Type</label>
-            <input type="text" name="type" id="type" class="form-control" style="border-radius: 10px; transition: border-color 0.3s;">
-        </div>
+    <label for="type" class="form-label" style="color: #007bff;">Type</label>
+    <select name="type" id="type" class="form-control" style="border-radius: 10px; transition: border-color 0.3s;">
+    <option value="" disabled selected>Sélectionner </option>
+    <option value="nature">Nature</option>
+        <option value="plage">Plage</option>
+        <option value="écologique">Écologique</option>
+        <option value="aventure">Aventure</option>
+        <option value="culturel">Culturel</option>
+        <option value="bien-être">Bien-être</option>
+        <option value="solaire">Solaire</option>
+        <option value="conservation">Conservation</option>
+        <option value="agrotourisme">Agrotourisme</option>
+        <option value="communautaire">Communautaire</option>
+    </select>
+</div>
+
 
         <div class="mb-3">
-            <label for="description" class="form-label" style="color: #333;">Description</label>
+            <label for="description" class="form-label" style="color: #007bff;">Description</label>
             <textarea name="description" id="description" class="form-control" rows="3" required style="border-radius: 10px; transition: border-color 0.3s;"></textarea>
         </div>
 
         <div class="mb-3">
-            <label for="image" class="form-label" style="color: #333;">Image</label>
             <input type="file" name="image" id="image" class="form-control" accept="image/*" style="border-radius: 10px; transition: border-color 0.3s;">
         </div>
 
