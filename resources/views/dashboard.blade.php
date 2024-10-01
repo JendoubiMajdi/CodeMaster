@@ -7,9 +7,53 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Module Hôtel -->
+                <div>
+                    <a href="{{ route('hotel.index') }}" class="block p-6 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition border border-gray-700">
+                        <h3 class="font-semibold text-lg">Module Hôtel</h3>
+                        <p>Description du module hôtel.</p>
+                    </a>
+                </div>
+
+                <!-- Module Réservation -->
+                <div>
+                    <a href="{{ route('reservation.index') }}" class="block p-6 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition border border-gray-700">
+                        <h3 class="font-semibold text-lg">Module Réservation</h3>
+                        <p>Description du module réservation.</p>
+                    </a>
+                </div>
+
+                <!-- Module Sensibilisation -->
+                <div>
+                    <a href="{{ route('sensibilisation.index') }}" class="block p-6 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition border border-gray-700">
+                        <h3 class="font-semibold text-lg">Module Sensibilisation</h3>
+                        <p>Description du module sensibilisation.</p>
+                    </a>
+                </div>
+
+                <!-- Module Itinéraire -->
+                <div>
+                    <a href="{{ route('itineraire.index') }}" class="block p-6 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition border border-gray-700">
+                        <h3 class="font-semibold text-lg">Module Itinéraire</h3>
+                        <p>Description du module itinéraire.</p>
+                    </a>
+                </div>
+
+                <!-- Module Feedback -->
+                <div>
+                    <a href="{{ route('feedback.index') }}" class="block p-6 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition border border-gray-700">
+                        <h3 class="font-semibold text-lg">Module Feedback</h3>
+                        <p>Description du module feedback.</p>
+                    </a>
+                </div>
+
+                <!-- Module Communauté -->
+                <div>
+                    <a href="{{ route('communaute.index') }}" class="block p-6 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition border border-gray-700">
+                        <h3 class="font-semibold text-lg">Module Communauté</h3>
+                        <p>Description du module communauté.</p>
+                    </a>
                 </div>
             </div>
         </div>
