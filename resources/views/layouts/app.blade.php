@@ -1,3 +1,5 @@
+@include('layouts.navbar')
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -13,11 +15,19 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Lien vers Alpine.js -->
+<script src="https://unpkg.com/alpinejs" defer></script>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
+            @include('layouts.navbar') <!-- Si le fichier navbar.blade.php existe -->
 
+<!-- Contenu de la page -->
+@yield('content')
             <!-- Page Heading -->
             @isset($header)
                 <header class="bg-white shadow">
@@ -32,5 +42,10 @@
                 {{ $slot }}
             </main>
         </div>
+
+        <!-- Lien vers Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </body>
 </html>

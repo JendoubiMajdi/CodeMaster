@@ -4,6 +4,18 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
+    
+    <div class="space-y-4">
+    <a href="{{ route('destinations.index') }}" class="block p-6 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition border border-gray-700">
+    <h3 class="font-semibold text-lg">Module Destination</h3>
+    <p>Description du module destination.</p>
+</a>
+<a href="{{ route('voyages.index') }}" class="block p-6 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition border border-gray-700">
+    <h3 class="font-semibold text-lg">Module Voyage</h3>
+    <p>Description du module voyage.</p>
+</a>
+
+    </div>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
