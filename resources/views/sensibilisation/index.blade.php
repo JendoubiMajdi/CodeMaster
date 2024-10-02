@@ -1,58 +1,58 @@
-
 <x-app-layout>
-<x-slot name="header">
+    <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
 
-
     <!-- Formulaire d'ajout d'un article -->
     <div class="min-h-screen flex items-center justify-center ">
-    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
-        <h2 class="text-2xl font-bold mb-6 text-center">Ajouter un article</h2>
+        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
+            <h2 class="text-2xl font-bold mb-6 text-center">Ajouter un article</h2>
 
-        <form action="{{ route('sensibilisation.store') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <div class="mb-4">
-                <label for="title" class="block text-sm font-medium text-gray-700">Titre</label>
-                <input type="text" name="title" required class="mt-1 block w-full p-2 border border-gray-300 rounded-lg">
-            </div>
-
-            <div class="mb-4">
-                <label for="content" class="block text-sm font-medium text-gray-700">Contenu</label>
-                <textarea name="content" required class="mt-1 block w-full p-2 border border-gray-300 rounded-lg"></textarea>
-            </div>
-
-            <div id="guides" class="mb-6">
-                <h4 class="text-lg font-semibold mb-4">Guides</h4>
-
-                <div class="guide mb-4">
-                    <label for="destination" class="block text-sm font-medium text-gray-700">Destination</label>
-                    <input type="text" name="guides[0][destination]" required class="mt-1 block w-full p-2 border border-gray-300 rounded-lg">
-
-                    <label for="description" class="block text-sm font-medium text-gray-700 mt-4">Description</label>
-                    <textarea name="guides[0][description]" required class="mt-1 block w-full p-2 border border-gray-300 rounded-lg"></textarea>
-
-                    <label for="image" class="block text-sm font-medium text-gray-700 mt-4">Upload image</label>
-                    <input type="file" name="guides[0][image]" required 
-                        class="block w-full p-2 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer">
+            <form action="{{ route('sensibilisation.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="mb-4">
+                    <label for="title" class="block text-sm font-medium text-gray-700">Titre</label>
+                    <input type="text" name="title" required class="mt-1 block w-full p-2 border border-gray-300 rounded-lg">
                 </div>
-            </div>
 
-            <div class="flex justify-between">
-                <button type="button" onclick="addGuide()" 
-                    class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
-                    Ajouter un guide
-                </button>
+                <div class="mb-4">
+                    <label for="content" class="block text-sm font-medium text-gray-700">Contenu</label>
+                    <textarea name="content" required class="mt-1 block w-full p-2 border border-gray-300 rounded-lg"></textarea>
+                </div>
 
-                <button type="submit" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">
-                    Ajouter l'article
-                </button>
-            </div>
-        </form>
+                <div id="guides" class="mb-6">
+                    <h4 class="text-lg font-semibold mb-4">Guides</h4>
+                    <!-- Le reste du formulaire pour les guides -->
+                </div>
+
+                <div class="flex justify-between">
+                    <button type="button" onclick="addGuide()" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+                        Ajouter un guide
+                    </button>
+
+                    <button type="submit" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">
+                        Ajouter l'article
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+
+    <!-- Affichage SweetAlert si l'ajout est réussi -->
+    @if(session('success'))
+    <script>
+        Swal.fire({
+            title: 'Succès!',
+            text: '{{ session('success') }}',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    </script>
+@endif
+
+
 
     <!-- Articles du Module Sensibilisation -->
     <div class="bg-white p-8 max-w-5xl mx-auto">

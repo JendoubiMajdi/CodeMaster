@@ -82,6 +82,10 @@ Route::delete('/transports/{transport}', [TransportController::class, 'destroy']
     Route::get('/hotels/{hotel}/edit', [HotelController::class, 'edit'])->name('hotel.edit'); // Afficher le formulaire d'édition
     Route::put('/hotels/{hotel}', [HotelController::class, 'update'])->name('hotel.update'); // Mettre à jour un hôtel
     Route::delete('/hotels/{hotel}', [HotelController::class, 'destroy'])->name('hotel.destroy'); // Supprimer un hôtel
+    // Définition des routes pour la ressource Feedback
+Route::resource('feedback', FeedbackController::class);
+Route::get('/feedbacks', [FeedbackController::class, 'index'])->name('feedback.index');
+Route::put('/feedbacks/{feedback}', [FeedbackController::class, 'update'])->name('feedback.update');
 });
 
 require __DIR__.'/auth.php';

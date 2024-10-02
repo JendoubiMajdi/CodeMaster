@@ -61,6 +61,12 @@
                         <p>Description du module transports.</p>
                     </a>
                 </div>
+                <div>
+                    <a href="{{ route('feedback.index') }}" class="block p-6 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition border border-gray-700">
+                        <h3 class="font-semibold text-lg">Module feedback</h3>
+                        <p>Description du module feedback.</p>
+                    </a>
+                </div>
               
             </div>
         </div>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use RealRashid\SweetAlert\Facades\Alert;
+
 use Illuminate\Http\Request;
 use App\Models\Article;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
@@ -40,8 +42,10 @@ public function store(Request $request)
         // Créer chaque guide associé à l'article
         $article->guides()->create($guideData);
     }
+    Alert::success('Success Title', 'Success Message');
 
-    return redirect()->route('sensibilisation.index')->with('success', 'Article et guides ajoutés avec succès');
+
+    return redirect()->route('sensibilisation.index')->with('success', 'Article ajouté avec succès!');
 }
 public function update(Request $request, $id)
 {
@@ -120,6 +124,7 @@ public function destroy($id)
     $article->guides()->delete();
     // Supprimer l'article (les guides seront supprimés en cascade)
     $article->delete();
+    Alert::success('Success Title', 'Success Message');
 
     return redirect()->route('sensibilisation.index')->with('success', 'Article et guides supprimés avec succès');
 }

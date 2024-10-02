@@ -2,63 +2,69 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Feedback; // Assurez-vous que c'est bien Feedback
 use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $feedbacks = Feedback::all(); // Récupérer tous les feedbacks
+        return view('feedback.index', compact('feedbacks')); // Passer les feedbacks à la vue
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('feedback.create'); // Retourner la vue de création
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        \Log::info($request->all()); // Ajoutez ceci pour voir les données reçues
+    
+        // Validation des données
+        $request->validate([
+            'username' => 'required|string|max:255',
+            'message' => 'required|string',
+        ]);
+    
+        Feedback::create($request->only('username', 'message'));
+    
+        return redirect()->route('feedback.index')->with('success', 'Feedback créé avec succès !');
+    }
+    
+
+    
+
+    public function show(Feedback $feedback)
+    {
+        return view('feedback.show', compact('feedback')); // Afficher un feedback spécifique
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit(Feedback $feedback)
     {
-        //
+        return view('feedback.edit', compact('feedback')); // Retourner la vue d'édition
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(Request $request, Feedback $feedback)
     {
-        //
+        // Validation des données
+        $request->validate([
+            'username' => 'required|string|max:255', // Utilisez le bon nom de champ
+            'message' => 'required|string',
+        ]);
+    
+        // Mettre à jour le feedback
+        $feedback->update($request->all()); // Utilisez les données de la requête
+    
+        return redirect()->route('feedback.index')->with('success', 'Feedback mis à jour avec succès !');
     }
+    
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function destroy(Feedback $feedback)
     {
-        //
-    }
+        // Supprimer le feedback
+        $feedback->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->route('feedback.index')->with('success', 'Feedback supprimé avec succès !');
     }
 }
