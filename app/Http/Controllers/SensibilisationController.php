@@ -100,7 +100,7 @@ public function update(Request $request, $id)
         }
     }
 
-    return redirect()->route('sensibilisation.edit', $article->id)->with('success', 'Article et guides mis à jour avec succès');
+    return redirect()->route('sensibilisation.index', $article->id)->with('success', 'Article et guides mis à jour avec succès');
 }
 
 

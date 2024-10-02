@@ -34,18 +34,18 @@
 
                 <!-- Module Itinéraire -->
                 <div>
-                    <a href="{{ route('itineraire.index') }}" class="block p-6 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition border border-gray-700">
-                        <h3 class="font-semibold text-lg">Module Itinéraire</h3>
-                        <p>Description du module itinéraire.</p>
-                    </a>
+                <a href="{{ route('destinations.index') }}" class="block p-6 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition border border-gray-700">
+    <h3 class="font-semibold text-lg">Module Destination</h3>
+    <p>Description du module destination.</p>
+</a>
                 </div>
 
-                <!-- Module Feedback -->
+            
                 <div>
-                    <a href="{{ route('feedback.index') }}" class="block p-6 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition border border-gray-700">
-                        <h3 class="font-semibold text-lg">Module Feedback</h3>
-                        <p>Description du module feedback.</p>
-                    </a>
+                <a href="{{ route('voyages.index') }}" class="block p-6 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition border border-gray-700">
+    <h3 class="font-semibold text-lg">Module Voyage</h3>
+    <p>Description du module voyage.</p>
+</a>
                 </div>
 
                 <!-- Module Communauté -->
