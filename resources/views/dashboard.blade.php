@@ -18,9 +18,9 @@
 
                 <!-- Module Réservation -->
                 <div>
-                    <a href="{{ route('reservation.index') }}" class="block p-6 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition border border-gray-700">
-                        <h3 class="font-semibold text-lg">Module Réservation</h3>
-                        <p>Description du module réservation.</p>
+                    <a href="{{ route('chambres.index') }}" class="block p-6 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition border border-gray-700">
+                        <h3 class="font-semibold text-lg">Module chambre</h3>
+                        <p>Description du module chambre.</p>
                     </a>
                 </div>
 
@@ -55,6 +55,13 @@
                         <p>Description du module communauté.</p>
                     </a>
                 </div>
+                <div>
+                    <a href="{{ route('transports.index') }}" class="block p-6 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition border border-gray-700">
+                        <h3 class="font-semibold text-lg">Module transports</h3>
+                        <p>Description du module transports.</p>
+                    </a>
+                </div>
+              
             </div>
         </div>
     </div>
