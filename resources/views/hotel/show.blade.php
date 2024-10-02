@@ -11,7 +11,7 @@
         <div class="card-body">
             <h5 class="card-title">{{ $hotel->nom }}</h5>
             <p class="card-text"><strong>Adresse : </strong>{{ $hotel->adresse }}</p>
-            <p class="card-text"><strong>Ville : </strong>{{ $hotel->ville }}</p>
+            <p class="card-text"><strong>pays: </strong>{{ $hotel->pays}}</p>
             <p class="card-text"><strong>Nombre d'étoiles : </strong>{{ $hotel->etoiles }}</p>
             <a href="{{ route('hotel.index') }}" class="btn btn-primary">Retour à la liste</a>
         </div>

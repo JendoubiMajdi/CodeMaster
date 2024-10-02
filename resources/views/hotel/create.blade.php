@@ -25,6 +25,10 @@
                 <input type="number" name="nombre_etages" class="form-control" min="1" required>
             </div>
             <div class="form-group">
+                <label for="etoiles">etoiles</label>
+                <input type="text" name="etoiles" class="form-control" min="1" required>
+            </div>
+            <div class="form-group">
                 <label for="services">Services (nom:prix)</label>
                 <textarea name="services" class="form-control" placeholder="WiFi:10, Piscine:20, etc."></textarea>
             </div>

@@ -14,6 +14,8 @@ class Hotel extends Model
         'services', 
         'activites',
         'nombre_etages',
+        'etoiles',
+      
  ] ;
 
     public function chambres()

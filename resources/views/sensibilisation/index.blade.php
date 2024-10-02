@@ -118,19 +118,25 @@
     function addGuide() {
         const guidesDiv = document.getElementById('guides');
         const newGuide = `
-            <div class="guide">
-                <label for="destination">Destination</label>
-                <input type="text" name="guides[${guideIndex}][destination]" required>
+        <div class="guide mb-4 p-4 border border-gray-200 rounded-lg bg-gray-50">
+    <label for="destination" class="block text-sm font-medium text-gray-700">Destination</label>
+    <input type="text" name="guides[${guideIndex}][destination]" required
+           class="mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+    
+    <label for="description" class="block text-sm font-medium text-gray-700 mt-4">Description</label>
+    <textarea name="guides[${guideIndex}][description]" required
+              class="mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"></textarea>
 
-                <label for="description">Description</label>
-                <textarea name="guides[${guideIndex}][description]" required></textarea>
+    <label for="image" class="block text-sm font-medium text-gray-700 mt-4">Upload image</label>
+    <input type="file" name="guides[${guideIndex}][image]" required 
+           class="block w-full p-2 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
 
-                <label for="image">Upload image</label>
-                <input class="block w-1/2 p-2 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer"
-                       type="file" name="guides[${guideIndex}][image]" required>
+    <button type="button" onclick="removeGuide(this)" 
+            class="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">
+        Supprimer ce guide
+    </button>
+</div>
 
-                <button type="button" onclick="removeGuide(this)">Supprimer ce guide</button>
-            </div>
         `;
         guidesDiv.insertAdjacentHTML('beforeend', newGuide);
         guideIndex++;

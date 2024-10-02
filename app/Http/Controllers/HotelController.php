@@ -28,6 +28,8 @@ class HotelController extends Controller
             'nombre_etages' => 'required|integer|min:1',
             'services' => 'nullable|string',
             'activites' => 'nullable|string',
+            'etoiles' => 'required|integer|min:1|max:5',
+            'pays' => 'required|string|max:100'
         
     ]);
 
@@ -77,9 +79,9 @@ class HotelController extends Controller
         $request->validate([
             'nom' => 'required|string|max:255',
             'adresse' => 'required|string|max:500',
-            'ville' => 'required|string|max:100',
-            'etoiles' => 'required|integer|min:1|max:5',
-             'pays' => 'required|string|max:100'
+            'pays' => 'required|string|max:100',
+            'etoiles' => 'nullable|integer|min:1|max:5',
+             'pays' => 'nullable|string|max:100'
         ]);
 
         // Mise à jour de l'hôtel

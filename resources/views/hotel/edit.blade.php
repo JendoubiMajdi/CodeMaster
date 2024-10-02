@@ -18,8 +18,8 @@
             <input type="text" name="adresse" class="form-control" value="{{ $hotel->adresse }}" required>
         </div>
         <div class="form-group">
-            <label for="ville">Ville</label>
-            <input type="text" name="ville" class="form-control" value="{{ $hotel->ville }}" required>
+            <label for="ville">pays</label>
+            <input type="text" name="pays" class="form-control" value="{{ $hotel->pays}}" required>
         </div>
         <div class="form-group">
             <label for="etoiles">Nombre d'étoiles</label>

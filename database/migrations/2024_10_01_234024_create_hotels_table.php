@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('adresse');  
             $table->string('pays');  
             $table->integer('nombre_etages');  
+            $table->integer('etoiles');  
+            
             $table->json('services')->nullable();  
             $table->json('activites')->nullable();  
             $table->timestamps();

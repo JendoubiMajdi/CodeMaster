@@ -16,7 +16,7 @@
             <tr>
                 <th>Nom</th>
                 <th>Adresse</th>
-                <th>Ville</th>
+                <th>Pays</th>
                 <th>Étoiles</th>
                 <th>Actions</th>
             </tr>
@@ -26,7 +26,7 @@
                 <tr>
                     <td>{{ $hotel->nom }}</td>
                     <td>{{ $hotel->adresse }}</td>
-                    <td>{{ $hotel->ville }}</td>
+                    <td>{{ $hotel->pays }}</td>
                     <td>{{ $hotel->etoiles }}</td>
                     <td>
                         <a href="{{ route('hotel.show', $hotel->id) }}" class="btn btn-info btn-sm">Voir</a>

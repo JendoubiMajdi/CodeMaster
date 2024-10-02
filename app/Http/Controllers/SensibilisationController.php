@@ -43,33 +43,19 @@ public function store(Request $request)
 
     return redirect()->route('sensibilisation.index')->with('success', 'Article et guides ajoutés avec succès');
 }
-
 public function update(Request $request, $id)
 {
     $request->validate([
         'title' => 'required|string|max:255',
         'content' => 'required',
-        'image' => 'sometimes|image|max:2048', // Validation de l'image si présente
         'guides' => 'nullable|array',
         'guides.*.destination' => 'required_with:guides|string',
         'guides.*.description' => 'required_with:guides|string',
+        'guides.*.image' => 'sometimes|image|max:2048', // Validation de l'image pour chaque guide
     ]);
 
     // Trouver l'article existant
     $article = Article::findOrFail($id);
-
-    // Si une nouvelle image est fournie, supprimer l'ancienne de Cloudinary
-    if ($request->hasFile('image')) {
-        // Vérifier s'il y a une ancienne image à supprimer
-        if ($article->guides->isNotEmpty() && $article->guides->first()->image_public_id) {
-            Cloudinary::destroy($article->guides->first()->image_public_id); // Supprimer l'image précédente
-        }
-
-        // Télécharger la nouvelle image sur Cloudinary
-        $cloudinaryImage = $request->file('image')->storeOnCloudinary('guides');
-        $url = $cloudinaryImage->getSecurePath();
-        $public_id = $cloudinaryImage->getPublicId();
-    }
 
     // Mettre à jour les détails de l'article
     $article->update($request->only('title', 'content'));
@@ -79,29 +65,38 @@ public function update(Request $request, $id)
 
     // Ajouter de nouveaux guides si soumis
     if ($request->filled('guides')) {
-        foreach ($request->guides as $guideData) {
-            // Si une nouvelle image a été téléchargée, l'utiliser
-            if ($request->hasFile('image')) {
-                $guideData['image_url'] = $url;
-                $guideData['image_public_id'] = $public_id;
-            } else {
-                // Vérifier si l'article a des guides et si le premier guide a une image
-                if ($article->guides->isNotEmpty() && $article->guides->first()->image_url !== null) {
-                    $guideData['image_url'] = $article->guides->first()->image_url;
-                    $guideData['image_public_id'] = $article->guides->first()->image_public_id;
-                } else {
-                    // Si aucun guide ou image n'existe, gérer l'absence d'image
-                    $guideData['image_url'] = null; // ou une valeur par défaut
-                    $guideData['image_public_id'] = null; // ou une valeur par défaut
+        foreach ($request->guides as $index => $guideData) {
+            // Initialiser les données du guide à créer
+            $newGuideData = [
+                'destination' => $guideData['destination'],
+                'description' => $guideData['description']
+            ];
+
+            // Vérifier si une nouvelle image est téléchargée pour ce guide
+            if ($request->hasFile("guides.$index.image")) {
+                // Supprimer l'ancienne image si elle existe
+                if (!empty($guideData['image_public_id'])) {
+                    Cloudinary::destroy($guideData['image_public_id']);
                 }
+
+                // Télécharger la nouvelle image sur Cloudinary
+                $cloudinaryImage = $request->file("guides.$index.image")->storeOnCloudinary('guides');
+                $newGuideData['image_url'] = $cloudinaryImage->getSecurePath();
+                $newGuideData['image_public_id'] = $cloudinaryImage->getPublicId();
+            } else {
+                // Si aucune nouvelle image n'est fournie, utiliser l'ancienne image
+                $newGuideData['image_url'] = $guideData['image_url'] ?? null;
+                $newGuideData['image_public_id'] = $guideData['image_public_id'] ?? null;
             }
-            
-            $article->guides()->create($guideData);
+
+            // Créer le guide avec les données
+            $article->guides()->create($newGuideData);
         }
     }
 
     return redirect()->route('sensibilisation.index', $article->id)->with('success', 'Article et guides mis à jour avec succès');
 }
+
 
 
 public function edit($id)
