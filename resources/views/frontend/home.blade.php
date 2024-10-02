@@ -15,7 +15,7 @@
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                       <li><a href="index.html" class="active">Home</a></li>
-                      <li><a href="properties.html">Properties</a></li>
+                      <li><a href="{{ route('properties') }}">Properties</a></li>
                       <li><a href="property-details.html">Property Details</a></li>
                       <li><a href="contact.html">Contact Us</a></li>
                       <li><a href="/login">Sign In</a></li>
