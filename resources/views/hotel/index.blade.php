@@ -7,7 +7,9 @@
     </x-slot>
 <div class="container">
     <h1>Liste des Hôtels</h1>
+    @if(auth()->user()->isAdmin())
     <a href="{{ route('hotel.create') }}" class="btn btn-primary mb-3">Ajouter un Hôtel</a>
+    @endif
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
@@ -30,12 +32,14 @@
                     <td>{{ $hotel->etoiles }}</td>
                     <td>
                         <a href="{{ route('hotel.show', $hotel->id) }}" class="btn btn-info btn-sm">Voir</a>
+                        @if(auth()->user()->isAdmin())
                         <a href="{{ route('hotel.edit', $hotel->id) }}" class="btn btn-warning btn-sm">Modifier</a>
                         <form action="{{ route('hotel.destroy', $hotel->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
                         </form>
+                        @endif
                     </td>
                 </tr>
             @endforeach

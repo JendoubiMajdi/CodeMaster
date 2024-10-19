@@ -27,7 +27,7 @@
                 <!-- Module Sensibilisation -->
                 <div>
                     <a href="{{ route('sensibilisation.index') }}" class="block p-6 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition border border-gray-700">
-                        <h3 class="font-semibold text-lg">Module Sensibilisation</h3>
+                        <h3 class="font-semibold text-lg">Module  éducation et Sensibilisation</h3>
                         <p>Description du module sensibilisation.</p>
                     </a>
                 </div>
@@ -49,12 +49,7 @@
                 </div>
 
                 <!-- Module Communauté -->
-                <div>
-                    <a href="{{ route('communaute.index') }}" class="block p-6 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition border border-gray-700">
-                        <h3 class="font-semibold text-lg">Module Communauté</h3>
-                        <p>Description du module communauté.</p>
-                    </a>
-                </div>
+             
                 <div>
                     <a href="{{ route('transports.index') }}" class="block p-6 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition border border-gray-700">
                         <h3 class="font-semibold text-lg">Module transports</h3>

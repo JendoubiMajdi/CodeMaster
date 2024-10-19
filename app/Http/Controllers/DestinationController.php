@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Destination;
-
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 
 class DestinationController extends Controller
@@ -38,13 +38,13 @@ class DestinationController extends Controller
         }
     
         Destination::create($validatedData);
-    
+        Alert::success('Success', 'Destination ajouté avec succès!');
         return redirect()->route('destinations.index')->with('success', 'Destination créée avec succès.');
         }
 
-    public function show(string $id)
+    public function show(string $destination)
     {
-        $destination = Destination::findOrFail($id);
+        $destination = Destination::findOrFail($destination);
         return view('destinations.show', compact('destination'));    }
 
     public function edit(string $id)
@@ -64,7 +64,7 @@ class DestinationController extends Controller
     
         $destination = Destination::findOrFail($id);
         $destination->update($request->all());
-    
+        Alert::success('Success', 'Destination mis a jour avec succès!');
         return redirect()->route('destinations.index')->with('success', 'Destination mise à jour avec succès.');
         }
 
@@ -73,6 +73,7 @@ class DestinationController extends Controller
     {
         $destination = Destination::findOrFail($id);
         $destination->delete();
+        Alert::success('Success', 'Destination supprimé succès!');
         return redirect()->route('destinations.index')->with('success', 'Destination supprimée avec succès.');   
      }
 }

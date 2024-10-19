@@ -7,13 +7,13 @@
     </x-slot>              
     <div class="container mt-5" style="background-color: #f4f6f9; padding: 40px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
     <h1 class="text-center mb-4" style="color: #007bff;">Liste des Voyages</h1>
-
+    @if(auth()->user()->isAdmin())
     <div class="d-flex justify-content-end mb-4">
         <a href="{{ route('voyages.create') }}" class="btn btn-lg" style="background-color: #007bff; color: white; border: none; padding: 10px 20px; font-size: 1.1em;">
             + Ajouter un voyage
         </a>
     </div>
-
+   @endif
     @if ($voyages->isEmpty())
         <p class="text-center" style="color: #555;">Aucun voyage disponible pour le moment.</p>
     @else
@@ -34,12 +34,14 @@
 
                             <div class="d-flex justify-content-between mt-3">
                                 <a href="{{ route('voyages.show', $voyage->id) }}" class="btn btn-primary">Détails</a>
+                                @if(auth()->user()->isAdmin())
                                 <a href="{{ route('voyages.edit', $voyage->id) }}" class="btn btn-warning">Modifier</a>
                                 <form action="{{ route('voyages.destroy', $voyage->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce voyage ?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Supprimer</button>
                                 </form>
+                                @endif
                             </div>
                         </div>
                     </div>

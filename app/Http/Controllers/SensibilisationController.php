@@ -42,7 +42,7 @@ public function store(Request $request)
         // Créer chaque guide associé à l'article
         $article->guides()->create($guideData);
     }
-    Alert::success('Success Title', 'Success Message');
+    Alert::success('Success', 'Article ajouté avec succès!');
 
 
     return redirect()->route('sensibilisation.index')->with('success', 'Article ajouté avec succès!');
@@ -97,7 +97,7 @@ public function update(Request $request, $id)
             $article->guides()->create($newGuideData);
         }
     }
-
+    Alert::success('Success', 'Article et guides mis à jour avec succès');
     return redirect()->route('sensibilisation.index', $article->id)->with('success', 'Article et guides mis à jour avec succès');
 }
 
@@ -124,7 +124,7 @@ public function destroy($id)
     $article->guides()->delete();
     // Supprimer l'article (les guides seront supprimés en cascade)
     $article->delete();
-    Alert::success('Success Title', 'Success Message');
+    Alert::success('Success', 'Article et guides supprimés avec succès');
 
     return redirect()->route('sensibilisation.index')->with('success', 'Article et guides supprimés avec succès');
 }

@@ -69,13 +69,13 @@
             {{ session('success') }}
         </div>
     @endif
-
+    @if(auth()->user()->isAdmin())
     <div class="mb-3">
         <a href="{{ route('transports.create') }}" class="btn btn-success btn-icon">
             <i class="fas fa-plus"></i>
         </a>
     </div>
-
+      @endif
     <div class="row">
         @foreach($transports as $transport)
             <div class="col-md-4">
@@ -86,6 +86,7 @@
                         <a href="{{ route('transports.show', $transport->id) }}" class="btn btn-info btn-icon">
                             <i class="fas fa-eye"></i>
                         </a>
+                        @if(auth()->user()->isAdmin())
                         <a href="{{ route('transports.edit', $transport->id) }}" class="btn btn-warning btn-icon">
                             <i class="fas fa-edit"></i>
                         </a>
@@ -96,6 +97,7 @@
                                 <i class="fas fa-trash"></i>
                             </button>
                         </form>
+                        @endif
                     </div>
                 </div>
             </div>

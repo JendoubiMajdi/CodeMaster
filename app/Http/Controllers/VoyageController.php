@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Voyage;
 use App\Models\Destination;
 use Illuminate\Http\Request;
@@ -46,14 +46,14 @@ class VoyageController extends Controller
     }
 
     $voyage->save();
-
+    Alert::success('Success', 'voyage ajouté avec succès');
     return redirect()->route('voyages.index')->with('success', 'Voyage créé avec succès.');
 }
 
     
 
-public function show($id) {
-    $voyage = Voyage::findOrFail($id);
+public function show($voyage) {
+    $voyage = Voyage::findOrFail($voyage);
     return view('voyages.show', compact('voyage'));
 }
 
@@ -84,7 +84,7 @@ public function update(Request $request, $id)
         'destination_id' => $request->destination_id,
         'details' => $request->details,
     ]);
-
+    Alert::success('Success', 'voyage mis a jour avec succès');
     return redirect()->route('voyages.index')->with('success', 'Voyage mis à jour avec succès.');
 }
 
@@ -97,7 +97,7 @@ public function destroy($id)
     }
 
     $voyage->delete(); 
-
+    Alert::success('Success', 'voyage supprimé ajouté avec succès');
     return redirect()->route('voyages.index')->with('success', 'Voyage supprimé avec succès.');
 }
 

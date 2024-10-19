@@ -35,6 +35,7 @@
                             <a href="{{ route('chambres.show', $chambre->id) }}" class="btn btn-outline-info btn-sm" title="Voir">
                                 <i class="fas fa-eye"></i>
                             </a>
+                            @if(auth()->user()->isAdmin())
                             <a href="{{ route('chambres.edit', $chambre->id) }}" class="btn btn-outline-warning btn-sm" title="Éditer">
                                 <i class="fas fa-edit"></i>
                             </a>
@@ -45,6 +46,7 @@
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </form>
+                            @endif
                             @if (!$chambre->reserver)
                             <a href="{{ route('reservations.create', $chambre->id) }}" class="btn btn-outline-success btn-sm" title="Réserver">
     <i class="fas fa-check-circle"></i> Réserver

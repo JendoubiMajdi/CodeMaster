@@ -4,7 +4,7 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-
+    @if(auth()->user()->isAdmin())
     <!-- Formulaire d'ajout d'un article -->
     <div class="min-h-screen flex items-center justify-center ">
         <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
@@ -39,20 +39,9 @@
             </form>
         </div>
     </div>
-
+    @endif
     <!-- Affichage SweetAlert si l'ajout est réussi -->
-    @if(session('success'))
-    <script>
-        Swal.fire({
-            title: 'Succès!',
-            text: '{{ session('success') }}',
-            icon: 'success',
-            confirmButtonText: 'OK'
-        });
-    </script>
-@endif
-
-
+ 
 
     <!-- Articles du Module Sensibilisation -->
     <div class="bg-white p-8 max-w-5xl mx-auto">
@@ -89,7 +78,7 @@
             </section>
             @endforeach
         </ul>
-
+        @if(auth()->user()->isAdmin())
         <!-- Lien pour modifier l'article -->
         <a href="{{ route('sensibilisation.edit', $article->id) }}" 
            class="inline-block px-4 py-2 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600 transition-colors duration-300">
@@ -106,6 +95,7 @@
                 Supprimer
             </button>
         </form>
+        @endif
     </div>
     @endforeach
 </div>
